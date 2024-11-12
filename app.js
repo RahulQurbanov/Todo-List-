@@ -1,40 +1,58 @@
 let isInputVisible = true;
+let isAscending = true;
+let input = document.querySelector("#todoInput");
+let list = document.querySelector("#todoList");
+let displayInp = document.querySelector(".inp");
 
 function addTask() {
-    let input = document.querySelector("#todoInput");
-    let list = document.querySelector("#todoList");
-    let displayInp = document.querySelector(".inp");
-
     if (isInputVisible && input.value.trim() !== "") {
         let taskDiv = document.createElement("div");
         taskDiv.classList.add('task-item');
 
-        // Create a span for the task text
         let taskText = document.createElement('span');
         taskText.textContent = input.value;
         taskText.classList.add('task-text');
         
-        // Create the cancel icon
         let cancelIcon = document.createElement("img");
         cancelIcon.src = "./image/Group 56.svg";
         cancelIcon.classList.add("cancel");
-        cancelIcon.onclick = () => taskDiv.remove();
+        cancelIcon.onclick = () => {
+            taskDiv.remove();
+        };
 
-        // Append text and cancel icon to the task container
         taskDiv.appendChild(taskText);
         taskDiv.appendChild(cancelIcon);
-
-        // Append the task to the list
         list.appendChild(taskDiv);
 
-        // Clear the input field and hide it
         input.value = "";
         input.disabled = true;
         displayInp.style.display = "none";
     } else {
-        // Show the input for the next entry
         displayInp.style.display = "block";
         input.disabled = false;
     }
 }
+
+function toggleSort() {
+    isAscending = !isAscending;
+    let tasks = list.children;
+
+    if (tasks.length < 2) {
+        return;
+    }
+
+    let sortArrow = document.querySelector(".arrow");
+    sortArrow.src = isAscending ? "./image/Group 34.svg" : "./image/Group 90.svg";
+
+    let tasksArray = Array.from(tasks);
+    tasksArray.sort((a, b) => {
+        let textA = a.querySelector('.task-text').textContent.toLowerCase();
+        let textB = b.querySelector('.task-text').textContent.toLowerCase();
+        return isAscending ? textA.localeCompare(textB) : textB.localeCompare(textA);
+    });
+
+    list.innerHTML = "";
+    tasksArray.forEach(task => list.appendChild(task));
+}
+
 

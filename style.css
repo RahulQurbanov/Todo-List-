@@ -30,26 +30,27 @@ body{
 .box-footer{
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 input{
     border: none;
     outline: none;
     width: 100%;
 }
-.inp, .todoList{
-    border: 1px solid #C4C4C4 ;
-    padding: 7px 15px;
-    gap: 5px;
+.inp{
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    border: 1px solid #C4C4C4;
+    padding: 7px 15px;
     border-radius: 10px;
     width: 320px;
 }
 .img{
+    width: 310px;
   display: flex;
   justify-content: flex-end;
   margin-bottom: 10px;
-  padding-right: 7px;
 }
 .cancel{
     cursor: pointer;
@@ -75,6 +76,9 @@ button {
 }
 button:hover{
     background-color: #975de2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .text{
     text-align: center;
@@ -100,14 +104,15 @@ button::after {
     padding: 7px 15px;
     gap: 5px;
 }
-
 #todoList {
     display: flex;
+    border: 1px solid #C4C4C4;
     flex-direction: column;
     gap: 0;
-    border: 1px solid #C4C4C4;
     border-radius: 10px;
     margin-top: 35px;
     width: 320px;
-} 
-
+}
+.inp input {
+    width: calc(100% - 24px);
+}
