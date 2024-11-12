@@ -47,7 +47,8 @@ input{
     width: 320px;
 }
 .img{
-    width: 310px;
+  cursor: pointer;
+  width: 310px;
   display: flex;
   justify-content: flex-end;
   margin-bottom: 10px;
