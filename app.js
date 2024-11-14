@@ -4,18 +4,15 @@ let displayInp = document.querySelector(".inp");
 let cancelIcon = document.querySelector(".cancel");
 let noBorder = document.querySelector(".no-border");
 
-// Hide the list if there are no tasks
 if (list.children.length === 0) {
     list.style.display = "none";
 }
 
-// Clear input when the cancel icon is clicked
 cancelIcon.onclick = () => {
     input.value = "";
     displayInp.style.display = "none";
 };
 
-// Function to add a new task
 function addTask() {
     if (input.value.trim() !== "") {
         let taskDiv = document.createElement("div");
@@ -46,7 +43,6 @@ function addTask() {
     }
 }
 
-// Function to update task numbers after sorting or deletion
 function updateTaskNumbers() {
     Array.from(list.children).forEach((task, index) => {
         let taskText = task.querySelector(".task-text");
@@ -64,7 +60,6 @@ let filter2 = document.querySelector(".filter2");
 
 filter2.style.display = "none";
 
-// A-Z Filter
 filter1.addEventListener("click", () => {
     let items = Array.from(list.children);
     items.sort((a, b) => {
@@ -73,12 +68,11 @@ filter1.addEventListener("click", () => {
             .localeCompare(b.querySelector(".task-text").textContent.split(". ")[1]);
     });
     items.forEach(item => list.appendChild(item));
-    updateTaskNumbers(); // Update task numbers after sorting
+    updateTaskNumbers(); 
     filter1.style.display = "none";
     filter2.style.display = "block";
 });
 
-// Z-A Filter
 filter2.addEventListener("click", () => {
     let items = Array.from(list.children);
     items.sort((a, b) => {
@@ -87,12 +81,11 @@ filter2.addEventListener("click", () => {
             .localeCompare(a.querySelector(".task-text").textContent.split(". ")[1]);
     });
     items.forEach(item => list.appendChild(item));
-    updateTaskNumbers(); // Update task numbers after sorting
+    updateTaskNumbers();
     filter2.style.display = "none";
     filter1.style.display = "block";
 });
 
-// Hover effects for filter icons
 filter1.addEventListener("mouseover", () => {
     filter1.src = "./image/Group 34 (1).svg";
 });

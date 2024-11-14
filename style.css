@@ -57,10 +57,10 @@ input {
     cursor: pointer;
 }
 .cancel:hover {
-    background-color: #833AE0;
-    color: white;
+    background-image: url(./image/Group\ 70.png);
+    /* color: white;
     border-radius: 999px;
-    border: #833AE0;
+    border: #833AE0; */
 }
 button {
     background-color: #833AE0;
@@ -126,4 +126,14 @@ button::after {
     word-wrap: break-word;
     white-space: normal;
     max-width: 280px;
+}
+.container-filter {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    width: 300px;
+}
+.arrow {
+    cursor: pointer;
 }
