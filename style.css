@@ -110,7 +110,6 @@ button::after {
 }
 
 #todoList {
-    display: flex;
     border: 1px solid #C4C4C4;
     flex-direction: column;
     gap: 0;
@@ -128,4 +127,3 @@ button::after {
     white-space: normal;
     max-width: 280px;
 }
-

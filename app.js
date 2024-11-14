@@ -1,25 +1,31 @@
-let isAscending = true;
 let input = document.querySelector("#todoInput");
 let list = document.querySelector("#todoList");
 let displayInp = document.querySelector(".inp");
 let cancelIcon = document.querySelector(".cancel");
+let noBorder = document.querySelector(".no-border");
 
+// Hide the list if there are no tasks
+if (list.children.length === 0) {
+    list.style.display = "none";
+}
+
+// Clear input when the cancel icon is clicked
 cancelIcon.onclick = () => {
-    if (input.value.trim() === "") {
-        input.value = "";
-        displayInp.style.display = "none";
-    }
+    input.value = "";
+    displayInp.style.display = "none";
 };
 
+// Function to add a new task
 function addTask() {
     if (input.value.trim() !== "") {
         let taskDiv = document.createElement("div");
-        taskDiv.classList.add('task-item');
+        taskDiv.classList.add("task-item");
+        list.style.display = "flex";
 
-        let taskText = document.createElement('span');
+        let taskText = document.createElement("span");
         taskText.textContent = `${list.children.length + 1}. ${input.value}`;
-        taskText.classList.add('task-text');
-        
+        taskText.classList.add("task-text");
+
         let taskCancelIcon = document.createElement("img");
         taskCancelIcon.src = "./image/Group 56.svg";
         taskCancelIcon.classList.add("cancel");
@@ -36,35 +42,67 @@ function addTask() {
         displayInp.style.display = "none";
     } else {
         displayInp.style.display = "block";
+        noBorder.style.border = "1px solid #C4C4C4";
     }
 }
 
+// Function to update task numbers after sorting or deletion
 function updateTaskNumbers() {
     Array.from(list.children).forEach((task, index) => {
-        let taskText = task.querySelector('.task-text');
-        taskText.textContent = `${index + 1}. ${taskText.textContent.split('. ')[1]}`;
+        let taskText = task.querySelector(".task-text");
+        taskText.textContent = `${index + 1}. ${taskText.textContent.split(". ")[1]}`;
     });
-}
 
-function toggleSort() {
-    isAscending = !isAscending;
-    let tasks = Array.from(list.children);
-
-    if (tasks.length < 2) {
-        return;
+    if (list.children.length === 0) {
+        list.style.display = "none";
+        noBorder.style.border = "none";
     }
-
-    let sortArrow = document.querySelector(".arrow");
-    sortArrow.src = isAscending ? "./image/Group 34.svg" : "./image/Group 90.svg";
-
-    tasks.sort((a, b) => {
-        let textA = a.querySelector('.task-text').textContent.toLowerCase();
-        let textB = b.querySelector('.task-text').textContent.toLowerCase();
-        return isAscending ? textA.localeCompare(textB) : textB.localeCompare(textA);
-    });
-
-    list.innerHTML = "";
-    tasks.forEach(task => list.appendChild(task));
-    updateTaskNumbers();
 }
 
+let filter1 = document.querySelector(".filter1");
+let filter2 = document.querySelector(".filter2");
+
+filter2.style.display = "none";
+
+// A-Z Filter
+filter1.addEventListener("click", () => {
+    let items = Array.from(list.children);
+    items.sort((a, b) => {
+        return a.querySelector(".task-text").textContent
+            .split(". ")[1]
+            .localeCompare(b.querySelector(".task-text").textContent.split(". ")[1]);
+    });
+    items.forEach(item => list.appendChild(item));
+    updateTaskNumbers(); // Update task numbers after sorting
+    filter1.style.display = "none";
+    filter2.style.display = "block";
+});
+
+// Z-A Filter
+filter2.addEventListener("click", () => {
+    let items = Array.from(list.children);
+    items.sort((a, b) => {
+        return b.querySelector(".task-text").textContent
+            .split(". ")[1]
+            .localeCompare(a.querySelector(".task-text").textContent.split(". ")[1]);
+    });
+    items.forEach(item => list.appendChild(item));
+    updateTaskNumbers(); // Update task numbers after sorting
+    filter2.style.display = "none";
+    filter1.style.display = "block";
+});
+
+// Hover effects for filter icons
+filter1.addEventListener("mouseover", () => {
+    filter1.src = "./image/Group 34 (1).svg";
+});
+filter1.addEventListener("mouseout", () => {
+    filter1.src = "./image/Group 34.svg";
+});
+
+filter2.addEventListener("mouseover", () => {
+    filter2.src = "./image/Group 91.svg";
+});
+filter2.addEventListener("mouseout", () => {
+    filter2.src = "./image/Group 90.svg";
+});
