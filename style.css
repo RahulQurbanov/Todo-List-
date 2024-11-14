@@ -1,18 +1,18 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-body{
+body {
     font-family: "Roboto", serif;
 }
-.container{
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
-.box{
+.box {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,24 +20,24 @@ body{
     border-radius: 10px;
     border: 1px solid #C4C4C4;
 }
-.box-head{
+.box-head {
     background: #FFDC40;
     height: 30px;
     width: 100%;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
-.box-footer{
+.box-footer {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-input{
+input {
     border: none;
     outline: none;
     width: 100%;
 }
-.inp{
+.inp {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -46,17 +46,17 @@ input{
     border-radius: 10px;
     width: 320px;
 }
-.img{
-  cursor: pointer;
-  width: 310px;
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 10px;
+.img {
+    cursor: pointer;
+    width: 310px;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
 }
-.cancel{
+.cancel {
     cursor: pointer;
 }
-.cancel:hover{
+.cancel:hover {
     background-color: #833AE0;
     color: white;
     border-radius: 999px;
@@ -75,13 +75,13 @@ button {
     padding-left: 37px;
     cursor: pointer;
 }
-button:hover{
+button:hover {
     background-color: #975de2;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.text{
+.text {
     text-align: center;
     margin: 10px 0 20px 0;
 }
@@ -102,9 +102,13 @@ button::after {
     align-items: center;
     justify-content: space-between;
     width: 320px; 
+    min-width: 280px;
+    max-width: 320px;
     padding: 7px 15px;
     gap: 5px;
+    text-align: left;
 }
+
 #todoList {
     display: flex;
     border: 1px solid #C4C4C4;
@@ -117,3 +121,11 @@ button::after {
 .inp input {
     width: calc(100% - 24px);
 }
+.task-text {
+    flex: 1;
+    text-align: left;
+    word-wrap: break-word;
+    white-space: normal;
+    max-width: 280px;
+}
+
