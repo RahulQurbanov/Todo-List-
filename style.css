@@ -16,7 +16,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 27%;
+    width: 420px;
     border-radius: 10px;
     border: 1px solid #C4C4C4;
 }
@@ -125,7 +125,7 @@ button::after {
     text-align: left;
     word-wrap: break-word;
     white-space: normal;
-    max-width: 280px;
+    max-width: 263px;
 }
 .container-filter {
     margin-bottom: 10px;
@@ -136,4 +136,101 @@ button::after {
 }
 .arrow {
     cursor: pointer;
+}
+
+/* @media (max-width:1226px) {
+    .inp{
+        width: 87%;
+    }
+    .container-filter{
+        width: 162%;
+    }
+    .container-filter img{
+        width: 23px;
+    }
+    h1{
+        font-size: 29px;
+    }
+    button{
+        width: 131px;
+    }
+}
+@media (min-width:1120px) and (max-width:1226px) {
+    button {
+        width: 131px;
+        padding: 12px;
+        font-size: .8em;
+    }
+    button::after {
+        height: 16px;
+    }
+    .container-filter{
+        width: 148%;
+    }
+}
+@media (min-width:1153px) and (max-width:1119px) {
+    .container-filter{
+        width: 142%;
+    }
+}
+@media (min-width:1092px) and (max-width:1152px) {
+    .container-filter{
+        width: 232px;
+    }
+    button{
+        width: 120px;
+        padding: 10px;
+        font-size: .8em;
+    }
+    button::after{
+        height: 12px;
+        width: 18px;
+    }
+    h1{
+        font-size: 26px;
+    }
+} */
+/* @media (min-width:100px) and (max-width:1091px) {
+    .box{
+        width: 400px;
+    }
+} */
+ @media (min-width:386px) and (max-width:472px) {
+    .box{
+        width: 365px;
+    }
+}
+ @media (min-width:347px) and (max-width:385px) {
+    .box{
+        width: 320px;
+    }
+    .inp{
+        width: 290px;
+    }
+    .container-filter img{
+        padding-right: 15px;
+    }
+    h1{
+        font-size: 25px;
+    }
+    button{
+        width: 145px;
+    }
+}
+ @media (min-width:320px) and (max-width:346px) {
+    .box{
+        width: 300px;
+    }
+    .inp{
+        width: 270px;
+    }
+    .container-filter img{
+        padding-right: 27px;
+    }
+    h1{
+        font-size: 22px;
+    }
+    button{
+        width: 130px;
+    }
 }
