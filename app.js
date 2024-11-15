@@ -20,8 +20,7 @@ function addTask() {
         list.style.display = "flex";
 
         let taskText = document.createElement("li");
-        taskText.textContent = input.value
-        // taskText.textContent = `${list.children.length + 1}. ${input.value}`;
+        taskText.textContent = input.value.trim(); 
         taskText.classList.add("task-text");
 
         let taskCancelIcon = document.createElement("img");
@@ -29,7 +28,10 @@ function addTask() {
         taskCancelIcon.classList.add("cancel");
         taskCancelIcon.onclick = () => {
             taskDiv.remove();
-            updateTaskNumbers();
+            if (list.children.length === 0) {
+                list.style.display = "none";
+                noBorder.style.border = "none";
+            }
         };
 
         taskDiv.appendChild(taskText);
@@ -44,19 +46,6 @@ function addTask() {
     }
 }
 
-function updateTaskNumbers() {
-    Array.from(list.children).forEach((task, index) => {
-        let taskText = task.querySelector(".task-text");
-        taskText.textContent = input.value;
-        // taskText.textContent = `${index + 1}. ${taskText.textContent.split(". ")[1]}`;
-    });
-
-    if (list.children.length === 0) {
-        list.style.display = "none";
-        noBorder.style.border = "none";
-    }
-}
-
 let filter1 = document.querySelector(".filter1");
 let filter2 = document.querySelector(".filter2");
 
@@ -65,12 +54,11 @@ filter2.style.display = "none";
 filter1.addEventListener("click", () => {
     let items = Array.from(list.children);
     items.sort((a, b) => {
-        return a.querySelector(".task-text").textContent
-            .split(". ")[1]
-            .localeCompare(b.querySelector(".task-text").textContent.split(". ")[1]);
+        let aText = a.querySelector(".task-text").textContent.toLowerCase();
+        let bText = b.querySelector(".task-text").textContent.toLowerCase();
+        return aText.localeCompare(bText);
     });
     items.forEach(item => list.appendChild(item));
-    updateTaskNumbers(); 
     filter1.style.display = "none";
     filter2.style.display = "block";
 });
@@ -78,12 +66,11 @@ filter1.addEventListener("click", () => {
 filter2.addEventListener("click", () => {
     let items = Array.from(list.children);
     items.sort((a, b) => {
-        return b.querySelector(".task-text").textContent
-            .split(". ")[1]
-            .localeCompare(a.querySelector(".task-text").textContent.split(". ")[1]);
+        let aText = a.querySelector(".task-text").textContent.toLowerCase();
+        let bText = b.querySelector(".task-text").textContent.toLowerCase();
+        return bText.localeCompare(aText);
     });
     items.forEach(item => list.appendChild(item));
-    updateTaskNumbers();
     filter2.style.display = "none";
     filter1.style.display = "block";
 });
@@ -101,3 +88,8 @@ filter2.addEventListener("mouseover", () => {
 filter2.addEventListener("mouseout", () => {
     filter2.src = "./image/Group 90.svg";
 });
+
+
+if (list.children < 2) {
+    filter1.removeEventListener("click",)
+}
