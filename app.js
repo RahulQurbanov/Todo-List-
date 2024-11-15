@@ -51,29 +51,6 @@ let filter2 = document.querySelector(".filter2");
 
 filter2.style.display = "none";
 
-filter1.addEventListener("click", () => {
-    let items = Array.from(list.children);
-    items.sort((a, b) => {
-        let aText = a.querySelector(".task-text").textContent.toLowerCase();
-        let bText = b.querySelector(".task-text").textContent.toLowerCase();
-        return aText.localeCompare(bText);
-    });
-    items.forEach(item => list.appendChild(item));
-    filter1.style.display = "none";
-    filter2.style.display = "block";
-});
-
-filter2.addEventListener("click", () => {
-    let items = Array.from(list.children);
-    items.sort((a, b) => {
-        let aText = a.querySelector(".task-text").textContent.toLowerCase();
-        let bText = b.querySelector(".task-text").textContent.toLowerCase();
-        return bText.localeCompare(aText);
-    });
-    items.forEach(item => list.appendChild(item));
-    filter2.style.display = "none";
-    filter1.style.display = "block";
-});
 
 filter1.addEventListener("mouseover", () => {
     filter1.src = "./image/Group 34 (1).svg";
@@ -91,5 +68,31 @@ filter2.addEventListener("mouseout", () => {
 
 
 if (list.children < 2) {
-    filter1.removeEventListener("click",)
+    filter1.removeEventListener("click")
+    filter2.removeEventListener("click")
+}else{
+    filter1.addEventListener("click", () => {
+        let items = Array.from(list.children);
+        items.sort((a, b) => {
+            let aText = a.querySelector(".task-text").textContent.toLowerCase();
+            let bText = b.querySelector(".task-text").textContent.toLowerCase();
+            return aText.localeCompare(bText);
+        });
+        items.forEach(item => list.appendChild(item));
+        filter1.style.display = "none";
+        filter2.style.display = "block";
+    });
+    
+    filter2.addEventListener("click", () => {
+        let items = Array.from(list.children);
+        items.sort((a, b) => {
+            let aText = a.querySelector(".task-text").textContent.toLowerCase();
+            let bText = b.querySelector(".task-text").textContent.toLowerCase();
+            return bText.localeCompare(aText);
+        });
+        items.forEach(item => list.appendChild(item));
+        filter2.style.display = "none";
+        filter1.style.display = "block";
+    });
+    
 }
