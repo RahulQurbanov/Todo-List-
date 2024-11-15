@@ -19,8 +19,9 @@ function addTask() {
         taskDiv.classList.add("task-item");
         list.style.display = "flex";
 
-        let taskText = document.createElement("span");
-        taskText.textContent = `${list.children.length + 1}. ${input.value}`;
+        let taskText = document.createElement("li");
+        taskText.textContent = input.value
+        // taskText.textContent = `${list.children.length + 1}. ${input.value}`;
         taskText.classList.add("task-text");
 
         let taskCancelIcon = document.createElement("img");
@@ -46,7 +47,8 @@ function addTask() {
 function updateTaskNumbers() {
     Array.from(list.children).forEach((task, index) => {
         let taskText = task.querySelector(".task-text");
-        taskText.textContent = `${index + 1}. ${taskText.textContent.split(". ")[1]}`;
+        taskText.textContent = input.value;
+        // taskText.textContent = `${index + 1}. ${taskText.textContent.split(". ")[1]}`;
     });
 
     if (list.children.length === 0) {
