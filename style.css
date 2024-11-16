@@ -9,9 +9,6 @@ body {
     font-optical-sizing: auto;
     font-weight: 100;
     font-style: normal;
-    font-variation-settings:
-      "wdth" 100,
-      "GRAD" 0;
 }
 .container {
     display: flex;
@@ -64,10 +61,7 @@ input {
     cursor: pointer;
 }
 .cancel:hover {
-    background-image: url(./image/Group\ 70.png);
-    /* color: white;
-    border-radius: 999px;
-    border: #833AE0; */
+    background-image: url(./image/Group_70.png);
 }
 button {
     background-color: #833AE0;
@@ -145,6 +139,9 @@ button::after {
 .arrow {
     cursor: pointer;
 }
+/* .space{
+    padding-top: 5px;
+} */
 
  @media (min-width:385px) and (max-width:472px) {
     .box{
@@ -217,7 +214,7 @@ button::after {
         width: 274px;
     }
     .task-item{
-        max-width: 274px;
+        max-width: 272px;
         min-width: 230px;
     }
     button::after{
@@ -225,6 +222,6 @@ button::after {
         width: 19px;
     }
     .task-text{
-        max-width: 213px;
+        max-width: 200px;
     }
 }
