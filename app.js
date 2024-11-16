@@ -4,6 +4,13 @@ let displayInp = document.querySelector(".inp");
 let cancelIcon = document.querySelector(".cancel");
 let noBorder = document.querySelector(".no-border");
 
+cancelIcon.addEventListener("mouseover", () => {
+    cancelIcon.src = "./image/Group_70.svg";
+});
+cancelIcon.addEventListener("mouseout", () => {
+    cancelIcon.src = "./image/Group_56.svg";
+});
+
 if (list.children.length === 0) {
     list.style.display = "none";
 }
@@ -34,6 +41,13 @@ function addTask() {
             }
         };
 
+        taskCancelIcon.addEventListener("mouseover", () => {
+            taskCancelIcon.src = "./image/Group_70.svg";
+        });
+        taskCancelIcon.addEventListener("mouseout", () => {
+            taskCancelIcon.src = "./image/Group_56.svg";
+        });
+
         taskDiv.appendChild(taskText);
         taskDiv.appendChild(taskCancelIcon);
         list.appendChild(taskDiv);
@@ -53,8 +67,6 @@ let filter2 = document.querySelector(".filter2");
 
 filter2.style.display = "none";
 
-
-
 function getFilter1() {
     if (list.children.length >= 2) {
         let items = Array.from(list.children);
@@ -64,8 +76,8 @@ function getFilter1() {
             return aText.localeCompare(bText);
         });
         items.forEach(item => list.appendChild(item));
-        document.querySelector(".filter1").style.display = "none";
-        document.querySelector(".filter2").style.display = "block";
+        filter1.style.display = "none";
+        filter2.style.display = "block";
     }
 }
 
@@ -78,35 +90,34 @@ function getFilter2() {
             return bText.localeCompare(aText);
         });
         items.forEach(item => list.appendChild(item));
-        document.querySelector(".filter2").style.display = "none";
-        document.querySelector(".filter1").style.display = "block";
+        filter2.style.display = "none";
+        filter1.style.display = "block";
     }
 }
 
 function toggleFilters() {
     if (list.children.length >= 2) {
-        document.querySelector(".filter1").style.pointerEvents = "auto";
-        document.querySelector(".filter2").style.pointerEvents = "auto";
+        filter1.style.pointerEvents = "auto";
+        filter2.style.pointerEvents = "auto";
     } else {
-        document.querySelector(".filter1").style.pointerEvents = "none";
-        document.querySelector(".filter2").style.pointerEvents = "none";
+        filter1.style.pointerEvents = "none";
+        filter2.style.pointerEvents = "none";
     }
 }
 
-document.querySelector(".filter1").addEventListener("click", getFilter1);
-document.querySelector(".filter2").addEventListener("click", getFilter2);
+filter1.addEventListener("click", getFilter1);
+filter2.addEventListener("click", getFilter2);
 
-// Mouseover effects
-document.querySelector(".filter1").addEventListener("mouseover", () => {
-    document.querySelector(".filter1").src = "./image/Group_34_(1).svg";
+filter1.addEventListener("mouseover", () => {
+    filter1.src = "./image/Group_34_(1).svg";
 });
-document.querySelector(".filter1").addEventListener("mouseout", () => {
-    document.querySelector(".filter1").src = "./image/Group_34.svg";
+filter1.addEventListener("mouseout", () => {
+    filter1.src = "./image/Group_34.svg";
 });
 
-document.querySelector(".filter2").addEventListener("mouseover", () => {
-    document.querySelector(".filter2").src = "./image/Group_91.svg";
+filter2.addEventListener("mouseover", () => {
+    filter2.src = "./image/Group_91.svg";
 });
-document.querySelector(".filter2").addEventListener("mouseout", () => {
-    document.querySelector(".filter2").src = "./image/Group_90.svg";
+filter2.addEventListener("mouseout", () => {
+    filter2.src = "./image/Group_90.svg";
 });

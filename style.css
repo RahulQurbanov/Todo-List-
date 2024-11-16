@@ -60,9 +60,12 @@ input {
 .cancel {
     cursor: pointer;
 }
-.cancel:hover {
-    background-image: url(./image/Group_70.png);
-}
+/* .cancel:hover {
+    background-image: url('./image/Group_70.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+} */
 button {
     background-color: #833AE0;
     border-radius: 22px;
@@ -223,5 +226,6 @@ button::after {
     }
     .task-text{
         max-width: 200px;
+        font-size: .9em;
     }
 }
